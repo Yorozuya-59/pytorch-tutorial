@@ -1,16 +1,15 @@
-version: '3'
-
 services:
-  analyse:
-    container_name: analyse
+  pytorch-tutorial:
+    container_name: pytorch-tutorial
     build: 
       context: ./environment
-      dockerfile: Dockerfile.mlenv
+      dockerfile: Dockerfile
     volumes:
       - ./src:/home/workdir/src
       - ./data:/home/workdir/data
       - ./models:/home/workdir/models
       - ./logs:/home/workdir/logs
+      - ./figures:/home/workdir/figures
       - .env:/home/workdir/.env
     tty: true
     environment:
