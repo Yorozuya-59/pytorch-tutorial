@@ -181,6 +181,7 @@ for epoch in tqdm(range(EPOCHS), desc='Epoch'):
     4. 勾配の計算（逆伝播）
     5. パラメータの更新
     '''
+    model.train()     # 学習モードに設定（Dropout や BatchNorm を利用する場合に必要）
     for inputs, targets in tqdm(train_dataloader, desc=f'Epoch {epoch+1} / {EPOCHS}', leave=False):     # 1. ミニバッチ単位でデータを取得
         predicts = model(inputs)     # 2. モデルによる推論（順伝播）
         loss = loss_fn(predicts, targets)     # 3. 損失関数の計算
@@ -205,6 +206,7 @@ for epoch in tqdm(range(EPOCHS), desc='Epoch'):
     3. スコアの計算
     また，評価フェーズではモデルのパラメータを更新しないため，torch.no_grad() を利用して，勾配計算を無効化することで，メモリ使用量の削減と計算高速化を図る
     '''
+    model.eval()     # 評価モードに設定（Dropout や BatchNorm を利用する場合に必要）
     with torch.no_grad():
         for inputs, targets in tqdm(test_dataloader, desc=f'Epoch {epoch+1} / {EPOCHS}', leave=False):     # 1. ミニバッチ単位でデータを取得
             predicts = model(inputs)     # 2. モデルによる推論（順伝播）
