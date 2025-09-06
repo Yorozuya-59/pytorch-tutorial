@@ -22,4 +22,4 @@ RUN pip install polars
 RUN pip install matplotlib japanize-matplotlib seaborn
 
 # Installation of libraries for deep learning
-RUN pip install torch torcheval tensorboard
+RUN pip install torch torcheval torchvision tensorboard
