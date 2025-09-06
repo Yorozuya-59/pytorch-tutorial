@@ -6,10 +6,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./src:/home/workdir/src
-      - ./data:/home/workdir/data
-      - ./models:/home/workdir/models
-      - ./logs:/home/workdir/logs
-      - ./figures:/home/workdir/figures
       - .env:/home/workdir/.env
     tty: true
     environment:
