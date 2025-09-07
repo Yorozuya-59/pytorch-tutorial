@@ -1,54 +1,14 @@
-# 機械学習向けテンプレートリポジトリ
-
-
-# フォルダ構成
-Github上のフォルダ構成は以下の通り．
-```bash: tree
-.
-├── README.md
-├── docker-compose.yml
-└── environment
-    ├── .config
-    │   └── ***
-    └── Dockerfile.mlenv
-```
-
-`docker compose`実行後のフォルダ構成は以下の通り．
-
-```bash: tree
-.
-├── README.md
-├── develop
-│   ├── data
-│   ├── logs
-│   ├── models
-│   ├── outputs
-│   └── src
-├── docker-compose.yml
-└── environment
-    ├── .config
-    │   └── ***
-    └── Dockerfile.mlenv
-```
-
-- `develop`: 開発関連のファイルを格納するディレクトリ
-    - `./data`: データセットを格納するディレクトリ
-    - `./logs`: ログファイルを格納するディレクトリ
-    - `./models`: モデルを格納するディレクトリ
-    - `./outputs`: 出力ファイルを格納するディレクトリ
-    - `./src`: ソースコードを格納するディレクトリ
-- `environment`: 環境関連のファイルを格納するディレクトリ
-    - `.config`: `JupyterLab`の設定ファイルを格納するディレクトリ
-
+# PyTorch での GPU を用いた深層学習チュートリアル
+本リポジトリは [Qiita 記事](https://qiita.com/Yorozuya59/items/671a4c0702d21eef2998)に対応したものになっています．
 
 # Quick Start
-1. テンプレートの使用
-    - `Create a new repository` > `Repository template`から本リポジトリを選択
-3. リポジトリのクローン
+0. （任意）リポジトリの Fork
+1. リポジトリをクローン
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/Yorozuya-59/pytorch-tutorial.git
     ```
-4. Dockerコンテナの起動
+2. 仮想環境の構築
     ```bash
-    docker compose up --build -d
+    docker compose build --no-cache    # 初回のみ
+    docker compose up -d
     ```
