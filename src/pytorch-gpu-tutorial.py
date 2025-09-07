@@ -32,6 +32,7 @@ EPOCHS = 100
 LR_STEP_SIZE = 10
 LR_GAMMA = 0.5
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # GPU が利用可能であれば GPU を利用する
+ic(DEVICE)
 
 
 data_root_dir = '/home/workdir/datasets'     # データセットの保存先ディレクトリ．複数回読み込む場合に，ダウンロードすることなく，保存したデータセットを利用することができる
@@ -63,13 +64,17 @@ DataLoader は Dataset からデータをバッチで取り出すためのイテ
 '''
 train_dataloader = DataLoader(
     dataset=train_data,
-    batch_size=64,
+    batch_size=256,
     shuffle=True,
+    num_workers=4,
+    pin_memory=True,
 )
 test_dataloader = DataLoader(
     dataset=test_data,
-    batch_size=64,
+    batch_size=256,
     shuffle=False,
+    num_workers=4,
+    pin_memory=True,
 )
 
 
